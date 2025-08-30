@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     federation({
       remotes: {
-        musicLibraryApp: "http://localhost:5001/assets/remoteEntry.js",
+        musicLibraryApp: "https://finac-plus-assignment-roan.vercel.app/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),
