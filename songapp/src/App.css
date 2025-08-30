@@ -5,14 +5,14 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #e2a6f2 50%, #a235b6 100%);
+  background: linear-gradient(135deg, #3394e39b 50%, #a235b6 100%);
 }
 
 
 
-
+/*hey*/
 .app-header {
-  background-color: #6B73FF;
+  background-color: #a5d1a76c;
   color: white;
   padding: 15px 30px;
   display: flex;
