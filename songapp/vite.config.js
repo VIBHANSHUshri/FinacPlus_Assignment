@@ -6,16 +6,15 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
+      name: "mainApp",
       remotes: {
-        musicLibraryApp: "https://finac-plus-assignment-roan.vercel.app/remoteEntry.js",
+        musicLibraryApp: "http://localhost:5001/assets/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),
   ],
   server: {
-    cors:true,
-  },
-  build: {
-    target: "esnext",
+    port: 5000,
+    cors: true,
   },
 });

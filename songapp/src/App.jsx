@@ -4,10 +4,7 @@ import Login from "./login";
 import { login, logout, getRole, getName } from "./auth";
 
 // Lazy-load remote app
-const MusicLibrary = lazy(() =>
-  import("musicLibraryApp/./musiclibrary") // name used in federation + exposed module
-);
-
+const MusicLibrary = lazy(() => import("musicLibraryApp/musiclibrary"));
 
 export default function App() {
   const [role, setRole] = useState(getRole());
@@ -38,9 +35,9 @@ export default function App() {
       </header>
 
       <Suspense fallback={<div className="SuspenseFallback">Loading Music Library...</div>}>
-      
+        <div className="MusicLibraryContainer">
           <MusicLibrary role={role} username={name} />
-       
+        </div>
       </Suspense>
     </div>
   );

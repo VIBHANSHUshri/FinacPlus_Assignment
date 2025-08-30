@@ -7,21 +7,22 @@ export default defineConfig({
     react(),
     federation({
       name: "musicLibraryApp",
-      filename: "remoteEntry.js", 
+      filename: "remoteEntry.js",
       exposes: {
-        "./musiclibrary": "./src/musiclibrary.jsx", 
+        "./musiclibrary": "./src/musiclibrary",
       },
       shared: ["react", "react-dom"],
     }),
   ],
   server: {
-    cors:true,
+    port: 5001,
+    cors: true,
   },
-build: {
+ build: {
   modulePreload: false,
   target: 'esnext',
   minify: false,
   cssCodeSplit: false
-},
+}
 
 });

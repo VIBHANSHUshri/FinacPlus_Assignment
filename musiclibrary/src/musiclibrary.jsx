@@ -8,7 +8,6 @@ const MusicLibraryContent = ({ role, username }) => {
   const [newArtist, setNewArtist] = useState("");
   const [newAlbum, setNewAlbum] = useState("");
 
-  // Filters, sorting, grouping
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [groupBy, setGroupBy] = useState("");
@@ -21,7 +20,7 @@ const MusicLibraryContent = ({ role, username }) => {
     setNewAlbum("");
   };
 
-  // Filtered and sorted songs
+  // Filter songs
   let displayedSongs = songs.filter(
     (s) =>
       s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -29,13 +28,14 @@ const MusicLibraryContent = ({ role, username }) => {
       s.album.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Sort songs
   if (sortBy) {
     displayedSongs = [...displayedSongs].sort((a, b) =>
       a[sortBy].localeCompare(b[sortBy])
     );
   }
 
-  // Grouping
+  // Group songs
   const groupedSongs = {};
   if (groupBy) {
     displayedSongs.forEach((song) => {
@@ -49,7 +49,6 @@ const MusicLibraryContent = ({ role, username }) => {
     <div className="music-library-container">
       <h2 className="welcome-msg">Welcome {username} ({role})</h2>
 
-      {/* Search, sort, group controls */}
       <div className="controls">
         <input
           type="text"
@@ -71,47 +70,45 @@ const MusicLibraryContent = ({ role, username }) => {
         </select>
       </div>
 
-      {/* Song list */}
-      {groupBy ? (
-        Object.keys(groupedSongs).map((group) => (
-          <div key={group}>
-            <h3 className="group-title">{group}</h3>
-            <ul className="song-list">
-              {groupedSongs[group].map((song) => (
-                <li key={song.id} className="song-item">
-                  {song.title} - {song.artist} ({song.album})
-                  {role === "admin" && (
-                    <button
-                      className="delete-btn"
-                      onClick={() => deleteSong(song.id)}
-                    >
-                      Delete
-                    </button>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))
-      ) : (
-        <ul className="song-list">
-          {displayedSongs.map((song) => (
-            <li key={song.id} className="song-item">
-              {song.title} - {song.artist} ({song.album})
-              {role === "admin" && (
-                <button
-                  className="delete-btn"
-                  onClick={() => deleteSong(song.id)}
-                >
-                  Delete
-                </button>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      {groupBy
+        ? Object.keys(groupedSongs).map((group) => (
+            <div key={group}>
+              <h3 className="group-title">{group}</h3>
+              <ul className="song-list">
+                {groupedSongs[group].map((song) => (
+                  <li key={song.id} className="song-item">
+                    {song.title} - {song.artist} ({song.album})
+                    {role === "admin" && (
+                      <button
+                        className="delete-btn"
+                        onClick={() => deleteSong(song.id)}
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        : (
+          <ul className="song-list">
+            {displayedSongs.map((song) => (
+              <li key={song.id} className="song-item">
+                {song.title} - {song.artist} ({song.album})
+                {role === "admin" && (
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteSong(song.id)}
+                  >
+                    Delete
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
 
-      {/* Add song for admin */}
       {role === "admin" && (
         <div className="add-song-form">
           <input
