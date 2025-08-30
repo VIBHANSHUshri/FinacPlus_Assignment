@@ -35,9 +35,9 @@ export default function App() {
       </header>
 
       <Suspense fallback={<div className="SuspenseFallback">Loading Music Library...</div>}>
-        <div className="MusicLibraryContainer">
+        
           <MusicLibrary role={role} username={name} />
-        </div>
+        
       </Suspense>
     </div>
   );
