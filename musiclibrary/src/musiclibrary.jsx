@@ -3,7 +3,7 @@ import { SongProvider, useSongs } from "./songcontext";
 import "./musiclibrary.css";
 
 const MusicLibraryContent = ({ role, username }) => {
-  const { songs, addSong, deleteSong } = useSongs();
+  const { songs = [], addSong, deleteSong } = useSongs();
   const [newTitle, setNewTitle] = useState("");
   const [newArtist, setNewArtist] = useState("");
   const [newAlbum, setNewAlbum] = useState("");
