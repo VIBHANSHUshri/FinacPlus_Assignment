@@ -4,7 +4,10 @@ import Login from "./login";
 import { login, logout, getRole, getName } from "./auth";
 
 // Lazy-load remote app
-const MusicLibrary = lazy(() => import("musicLibraryApp/musiclibrary"));
+const MusicLibrary = lazy(() =>
+  import("musicLibraryApp/./musiclibrary") // name used in federation + exposed module
+);
+
 
 export default function App() {
   const [role, setRole] = useState(getRole());
