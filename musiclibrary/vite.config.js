@@ -7,9 +7,9 @@ export default defineConfig({
     react(),
     federation({
       name: "musicLibraryApp",
-      filename: "remoteEntry.js", // this will be generated
+      filename: "remoteEntry.js", 
       exposes: {
-        "./musiclibrary": "./src/MusicLibrary.jsx", // adjust path
+        "./musiclibrary": "./src/musiclibrary.jsx", 
       },
       shared: ["react", "react-dom"],
     }),
