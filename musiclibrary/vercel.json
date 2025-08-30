@@ -8,7 +8,7 @@
     }
   ],
   "routes": [
-    { "src": "/remoteEntry.js", "dest": "/dist/remoteEntry.js" },
+    { "src": "/remoteEntry.js", "dest": "/dist/assets/remoteEntry.js" },
     { "src": "/(.*)", "dest": "/dist/$1" }
   ]
 }
