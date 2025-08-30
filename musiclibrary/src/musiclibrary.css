@@ -4,15 +4,15 @@
   padding: 30px 40px;
   max-width: 900px;
   margin: 40px auto;
-  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  background: linear-gradient(120deg, #141f3e, #e4d0d0);
   border-radius: 15px;
-  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 24px rgba(216, 174, 174, 0.257);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .welcome-msg {
   margin-bottom: 25px;
-  color: #222222;
+  color: #222121;
   font-size: 24px;
   text-align: center;
   font-weight: 600;

@@ -2,10 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 const STORAGE_KEY = "songs";
 
-const defaultSongs = [
-  { id: 1, title: "Song A", artist: "Artist 1", album: "Album X" },
-  { id: 2, title: "Song B", artist: "Artist 2", album: "Album Y" },
-];
+
 
 const SongContext = createContext();
 export const useSongs = () => useContext(SongContext);
