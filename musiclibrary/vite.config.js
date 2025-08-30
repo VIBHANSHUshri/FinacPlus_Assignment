@@ -15,7 +15,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 5001,
+    cors:true,
   },
 build: {
   modulePreload: false,
