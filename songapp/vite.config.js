@@ -13,7 +13,7 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 5000,
+    cors:true,
   },
   build: {
     target: "esnext",
