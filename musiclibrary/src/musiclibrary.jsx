@@ -138,11 +138,11 @@ const MusicLibraryContent = ({ role, username }) => {
   );
 };
 
-export default function MusicLibrary({ role = "admin", username = "v" }) {
+export default function MusicLibrary({ role , username}) {
   // Default role and username set here
   return (
     <SongProvider>
-      <MusicLibraryContent role="admin" username={username} />
+      <MusicLibraryContent role={role} username={username} />
     </SongProvider>
   );
 }
