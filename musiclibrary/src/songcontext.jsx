@@ -9,7 +9,7 @@ export const useSongs = () => useContext(SongContext);
 
 export const SongProvider = ({ children }) => {
   const storedSongs = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  const [songs, setSongs] = useState(storedSongs || defaultSongs);
+  const [songs, setSongs] = useState(storedSongs); 
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(songs));
