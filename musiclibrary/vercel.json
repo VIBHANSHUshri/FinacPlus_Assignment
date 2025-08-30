@@ -1,13 +1,14 @@
 {
-  "rewrites": [
-    { "source": "/remoteEntry.js", "destination": "/dist/remoteEntry.js" }
-  ],
-  "headers": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/remoteEntry.js",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
-      ]
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
     }
+  ],
+  "routes": [
+    { "src": "/remoteEntry.js", "dest": "/dist/remoteEntry.js" },
+    { "src": "/(.*)", "dest": "/dist/$1" }
   ]
 }
