@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, lazy, Suspense } from "react";
+import './App.css';
+import Login from "./login";
+import { login, logout, getRole, getName } from "./auth";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Lazy-load remote app
+const MusicLibrary = lazy(() => import("musicLibraryApp/musiclibrary"));
+
+export default function App() {
+  const [role, setRole] = useState(getRole());
+  const [name, setName] = useState(getName());
+
+  const handleLogin = (selectedRole, username) => {
+    login(selectedRole, username);
+    setRole(selectedRole);
+    setName(username);
+  };
+
+  const handleLogout = () => {
+    logout();
+    setRole(null);
+    setName(null);
+  };
+
+  if (!role) return <Login onLogin={handleLogin} />;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <header className="app-header">
+        <h1>Music App</h1>
+        <div className="user-info">
+          Logged in as: {name} ({role})
+          <button className="logout-btn" onClick={handleLogout}>Logout</button>
+        </div>
+      </header>
 
-export default App
+      <Suspense fallback={<div className="SuspenseFallback">Loading Music Library...</div>}>
+      
+          <MusicLibrary role={role} username={name} />
+       
+      </Suspense>
+    </div>
+  );
+}

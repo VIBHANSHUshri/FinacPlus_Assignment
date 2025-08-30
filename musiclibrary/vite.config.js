@@ -6,16 +6,22 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      remotes: {
-        musicLibraryApp: "http://localhost:5001/assets/remoteEntry.js",
+      name: "musicLibraryApp",
+      filename: "remoteEntry.js", // this will be generated
+      exposes: {
+        "./musiclibrary": "./src/MusicLibrary.jsx", // adjust path
       },
       shared: ["react", "react-dom"],
     }),
   ],
   server: {
-    port: 5000,
+    port: 5001,
   },
-  build: {
-    target: "esnext",
-  },
+build: {
+  modulePreload: false,
+  target: 'esnext',
+  minify: false,
+  cssCodeSplit: false
+},
+
 });
