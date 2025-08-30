@@ -4,12 +4,15 @@
   padding: 30px 40px;
   max-width: 900px;
   margin: 40px auto;
-  background: linear-gradient(120deg, #141f3e, #e4d0d0);
+  background: linear-gradient(120deg, #9cb2f0, #e4d0d0);
   border-radius: 15px;
   box-shadow: 0 12px 24px rgba(216, 174, 174, 0.257);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+.heading{
+  font-weight: 500;
+  color: #2b160ba8;
+}
 .welcome-msg {
   margin-bottom: 25px;
   color: #222121;
@@ -29,7 +32,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  border-bottom: 1px solid #e3e3e3;
+  border-bottom: 1px solid #000000;
+  background-color: #e9e9e9;
   font-size: 16px;
   border-radius: 8px;
   transition: all 0.2s ease;
@@ -37,6 +41,7 @@
 
 .song-item:hover {
   background-color: #e8f0ff;
+  border: 1px solid black;
 }
 
 .delete-btn {

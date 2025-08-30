@@ -95,7 +95,7 @@ const MusicLibraryContent = ({ role, username }) => {
           <ul className="song-list">
             {displayedSongs.map((song) => (
               <li key={song.id} className="song-item">
-                {song.title} - {song.artist} ({song.album})
+               <span className="heading">Song Title - {song.title}</span ><span className="heading">Song Artist - {song.artist}</span> <span className="heading">Song Album - {song.album}</span> 
                 {role === "admin" && (
                   <button
                     className="delete-btn"
@@ -138,10 +138,11 @@ const MusicLibraryContent = ({ role, username }) => {
   );
 };
 
-export default function MusicLibrary({ role, username }) {
+export default function MusicLibrary({ role = "admin", username = "v" }) {
+  // Default role and username set here
   return (
     <SongProvider>
-      <MusicLibraryContent role={role} username={username} />
+      <MusicLibraryContent role="admin" username={username} />
     </SongProvider>
   );
 }
